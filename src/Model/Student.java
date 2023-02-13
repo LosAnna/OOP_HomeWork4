@@ -1,29 +1,24 @@
 package Model;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Student extends User {
-    private String name;
+
     private float grade;
     private int year;
 
-    public Student(String name, float grade, int year) {
-        this.name = name;
+    public Student(String name, float grade, int year, Teacher teacher) {
+        super();
+        this.setName(name);
         this.grade = grade;
         this.year = year;
-
+        this.teacher = teacher;
     }
 
     private Teacher teacher;
 
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public Teacher getTeacher() {
+        return teacher;
     }
 
     public float getGrade() {
@@ -47,21 +42,22 @@ public class Student extends User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return Float.compare(student.grade, grade) == 0 && year == student.year && Objects.equals(name, student.name);
+        return Float.compare(student.grade, grade) == 0 && year
+                == student.year && Objects.equals(this.getName(), student.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, grade, year);
+        return Objects.hash(getName(), grade, year);
     }
 
     @Override
     public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", grade=" + grade +
-                ", year=" + year +
-                ", teacher=" + teacher +
-                '}';
+        return "_Student_" +
+                "name_" + this.getName() +
+                "_grade_" + this.grade +
+                "_year_" + this.year +
+                "_teacher_" + teacher.getName() +
+                "\n";
     }
 }

@@ -4,20 +4,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class Teacher extends User {
-    private String name;
     private List<Student> group;
 
-    public Teacher(String name, List<Student> group) {
-        this.name = name;
-        this.group = group;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public Teacher(String name) {
+        this.setName(name);
     }
 
     public List<Student> getGroup() {
@@ -33,18 +23,18 @@ public class Teacher extends User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Teacher teacher = (Teacher) o;
-        return Objects.equals(name, teacher.name);
+        return Objects.equals(this.getName(), teacher.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(this.getName());
     }
 
     @Override
     public String toString() {
-        return "Teacher{" +
-                "name='" + name + '\'' +
-                '}';
+        return "_Teacher_"
+                + this.getName() +
+                "\n";
     }
 }
